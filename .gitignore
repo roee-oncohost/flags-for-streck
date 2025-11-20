@@ -3,3 +3,5 @@
 data/
 !data/streck_conversion_coefficients.json
 flags_env/
+.vscode/
+__pycache__/

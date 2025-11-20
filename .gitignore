@@ -7,3 +7,4 @@ flags_env/
 __pycache__/
 *.ipynb
 !creating_bridging_factors.ipynb
+!analyzing_bridging_results.ipynb

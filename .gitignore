@@ -5,3 +5,5 @@ data/
 flags_env/
 .vscode/
 __pycache__/
+*.ipynb
+!creating_bridging_factors.ipynb

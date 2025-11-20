@@ -1,8 +1,8 @@
-    """_summary_
+"""_summary_
 
     Returns:
-        _type_: _description_
-    """
+    _type_: _description_
+"""
 
 import os
 import json
@@ -252,42 +252,21 @@ def match_file(row, files):
     return None
 
 def match_probe_aptamer(df):
-    """TODO"""
+    """_summary_
+
+    Args:
+        df (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     probe_names = list(set(df['ProbeName'].to_list()))
     probe_names = [probe_name for probe_name in probe_names if probe_name.startswith('anti-')]
     probe_to_aptamer_dict = {probe_name: probe_name.split('anti-')[1].split('_')[0] for probe_name in probe_names}
     aptamer_to_probe_dict = {value: key for key, value in probe_to_aptamer_dict.items()}
     return probe_to_aptamer_dict
-
-
-    
-
-
-
-
-
-
-
-
-def test(dir_path):
-    files = [file for file in os.listdir(dir_path) if file.endswith('.txt')]
-    for file in files:
-        file_path = os.path.join(dir_path, file)
-        text = read_text_file(file_path)
-        sections = get_sections(text)
-        dataframes_dict = {}
-        type_mappings = {}
-        for i, section in enumerate(sections):
-            lines = section.strip().split('\n')
-            type_row, header_row, header_name, data_rows = analyze_lines(lines)
-            df = create_df(type_row, header_row, data_rows, header_name, type_mappings)
-            dataframes_dict[header_name] = df
-        reconstituted_text = dataframes_to_text(dataframes_dict, type_mappings)
-        make_text_file(file_path, reconstituted_text)
-    
-    
+   
 
 if __name__ == '__main__':
     alter_scanner_files('./data/OH2025_039/texts', './data/OH2025_039/OH2025_039 Workbook.xlsx', './data/streck_conversion_coefficients.json',['A1', 'C3'])
     # test('./data/texts')
-    print('Done')
